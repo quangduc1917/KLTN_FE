@@ -1,0 +1,109 @@
+<app-auth-contect>
+  <section class="section">
+    <div class="section-header">
+      <h1>Members</h1>
+    </div>
+    <div class="section-body">
+      <div class="row">
+        <div class="col-12 col-md-12 col-lg-12">
+          <div class="card author-box card-primary">
+            <div class="card-header">
+              <h4>Manage Members</h4>
+              <div class="card-header-form">
+                  <form>
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                      <div class="input-group-btn">
+                        <button class="btn btn-primary"><i class="fas fa-search"></i></button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table  table-md">
+                 
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Total</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                 
+                 
+                    <tr *ngFor="let item of tutorials ">
+                     <td>{{ item.userId }}</td>
+                     <td>{{ item.userName }}</td>
+                     <td>{{item.total}}</td>
+                     <td *ngIf="item.status === 0"><div class="badge badge-success">Active</div></td>
+                     <td *ngIf="item.status !== 0"><div class="badge badge-danger">Not Active</div></td>
+                     <td>
+                      <button class="btn btn-secondary" data-toggle="modal" data-target="#deatail" (click)="detail(item)">Detail</button>
+                      <button class="btn btn-danger ml-2 mr-2"  (click)="blockUser(item.userId)">Block</button>
+                      <button class="btn btn-success"  (click)="unBlock(item.userId)">Unblock</button>
+
+                     </td>
+                    </tr>
+             
+                </table>
+              </div>
+            </div>
+            <div class="card-footer text-right">
+              <nav class="d-inline-block">
+
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="modal fade" id="deatail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Deatail</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="container">
+              <table class="table table-md">
+                <tr>
+                  <td>ID</td>
+                  <td>{{userId}}</td>
+                </tr>
+                <tr>
+                  <td>Username</td>
+                  <td>{{userName}}</td>
+                </tr>
+                <tr>
+                  <td>Fullname</td>
+                  <td>{{fullName}}</td>
+                </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>{{email}}</td>
+                </tr>
+                <tr>
+                  <td>Total money</td>
+                  <td>{{total}}</td>
+                </tr>
+                <tr>
+                  <td>Address</td>
+                  <td>{{address}}</td>
+                </tr>
+
+              </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</app-auth-contect>
